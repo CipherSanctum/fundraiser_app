@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block seotag %}
+  <title>Create a fundraiser</title>
+{% endblock seotag %}
+
+
+
+{% block maincontent %}
+
+
+    <h2 class="margintop100px"><u>Create a {{ category_slug }} fundraiser</u></h2>
+    <p><em><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown syntax</a> is supported.</em></p>
+    <form action="." method="POST">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="submit" value="Post!" class="submitbox">
+    </form>
+
+
+{% endblock maincontent %}

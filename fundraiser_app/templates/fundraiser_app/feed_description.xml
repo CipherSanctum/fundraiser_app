@@ -1,0 +1,2 @@
+{% load fundraiser_tags_pwn %}
+{{ obj.body|markdown_format_fundraiser }}

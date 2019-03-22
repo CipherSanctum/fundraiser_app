@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fundraiser_tags_pwn %}
+
+
+{% block seotag %}
+  <title>Fundraiser | {{ message_update.title }}</title>
+{% endblock seotag %}
+
+
+
+{% block maincontent %}
+
+    <p class="margintop150px">Go to <a href="{% url 'fundraiser_app:detail' message_update.fundraiser.category.slug message_update.fundraiser.id message_update.fundraiser.created.year message_update.fundraiser.created.month message_update.fundraiser.created.day message_update.fundraiser.slug %}">original page</a></p>
+
+    <div class="commentbox {% cycle 'indigo_border_with_center' 'indigo_border_with_center2' %}">
+      <h3 class="comment-username"><u>{{ message_update.user }}</u></h3>
+
+      <p class="comment-date">{{ message_update.created }}</p>
+
+      {% if message_update.is_updated %}
+        <span class="comment-date disp_inl_block tnr">
+          <b class="springgreen"><u>Updated:</u></b> {{ message_update.updated }}
+        </span>
+      {% endif %}
+
+      <div class="clearfloats">
+        <h3><u>{{ message_update.title }}</u></h3>
+          <p class="comment-comment">{{ message_update.body|markdown_format_fundraiser }}</p>
+      </div>
+    </div>
+
+{% endblock maincontent %}

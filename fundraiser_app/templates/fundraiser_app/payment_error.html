@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block seotag %}
+  <title>Error</title>
+{% endblock seotag %}
+
+
+
+{% block maincontent %}
+
+    <h1 class="margintop100px" style="color: red;">There was an error with your payment.</h1>
+
+    <p><b><u>Response code:</u></b> {{ payment_response }}</p>
+    <p><b><u>Status message:</u></b> {{ status_message }}</p>
+
+    <p>Return to <a href="{% url 'fundraiser_app:home' %}">fundraiser home page</a></p>
+
+
+
+
+{% endblock maincontent %}

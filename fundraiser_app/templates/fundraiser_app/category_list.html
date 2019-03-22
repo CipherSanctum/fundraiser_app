@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block seotag %}
+  <title>{{ category_slug }} fundraisers</title>
+{% endblock seotag %}
+
+
+
+{% block maincontent %}
+
+    <h1 class="margintop100px">{{ category_slug }} fundraisers</h1>
+
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'fundraiser_app:create' category_slug %}"><button class="submitbox margintop30px">Create Fundraiser</button></a>
+    {% else %}
+
+      <p>If you want to make a fundraiser: create an account, login, and you'll see a button on this page to do so.</p>
+
+    {% endif %}
+
+
+    {% for fundraiser in fundraisers %}
+
+      <div class="pwn_forum_topic">
+        <h2><u><a href="{% url 'fundraiser_app:detail' fundraiser.category.slug fundraiser.id fundraiser.created.year fundraiser.created.month fundraiser.created.day fundraiser.slug %}">{{ fundraiser.title }}</a></u></h2>
+
+        <p class="pwn_forum_topic_creator">
+
+          <span class="disp_inl_block">
+            <span style="color: black;"><b><u>Created:</u></b></span>
+            <span class="holy_empire">{{ fundraiser.user }}</span> on {{ fundraiser.created }}
+          </span>
+
+          <span class="disp_inl_block">
+            <span style="color: black; margin-left: 1em;"><b><u>Ends:</u></b></span> {{ fundraiser.ends_on }}
+          </span>
+
+          <span class="disp_inl_block">
+            <span style="color: black; margin-left: 1em;"><b><u>Raised:</u></b></span>${{ fundraiser.amount_raised|intcomma }}
+            <b class="holy_empire"> / </b> ${{ fundraiser.amount_needed|intcomma }}
+          </span>
+
+        </p>
+
+        <p><b><u>Percentage complete:</u></b> {{ fundraiser.get_percentage_raised }} %</p>
+
+      </div>
+
+    {% endfor %}
+
+
+
+{% endblock maincontent %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fundraiser_tags_pwn %}
+
+
+{% block seotag %}
+  <title>Edit Your Update | {{ message_update.title }}</title>
+{% endblock seotag %}
+
+
+
+{% block maincontent %}
+
+<h1 class="margintop100px">{{ message_update.title }}</h1>
+
+
+<form id="update_form" action="." method="POST">
+  {{ form.as_p }}
+  {% csrf_token %}
+  <input type="submit" value="EDIT!" class="submitbox">
+</form>
+
+{% endblock maincontent %}

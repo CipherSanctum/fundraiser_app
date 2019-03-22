@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block seotag %}
+  <title>Thank You!</title>
+{% endblock seotag %}
+
+
+
+{% block maincontent %}
+
+    <h1 class="margintop100px">Thank You!</h1>
+
+    <p>Your donation helps!</p>
+
+    <p><b><u>Status message:</u></b> <em>{{ status_message }}</em></p>
+    <p><b><u>Transaction id:</u></b> <em>{{ trans_id }}</em></p>
+    <p><b><u>Card number:</u></b> <em>{{ masked_card_number }}</em></p>
+
+    <p>Return to <a href="{% url 'fundraiser_app:home' %}">fundraiser home page</a></p>
+
+
+
+
+{% endblock maincontent %}

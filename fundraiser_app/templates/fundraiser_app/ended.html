@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block seotag %}
+  <title>{{ fundraiser.title }} is over!</title>
+{% endblock seotag %}
+
+
+
+{% block maincontent %}
+
+    <h1 class="margintop100px">{{ fundraiser.title }} is over!</h1>
+
+    <p>Sorry, but the donation period is over. It's only allowed 90 days for the time being.</p>
+
+    <p>Return to <a href="{% url 'fundraiser_app:home' %}">fundraiser home page</a></p>
+
+
+
+
+{% endblock maincontent %}

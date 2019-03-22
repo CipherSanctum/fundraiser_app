@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block seotag %}
+  <title>Fundraiser Categories | Home Page</title>
+{% endblock seotag %}
+
+
+
+{% block maincontent %}
+
+    <h1 class="margintop100px">Fundraiser Categories</h1>
+
+
+    {% for category in categories %}
+
+      <div class="pwn_forum_topic">
+        <h2><u><a href="{% url 'fundraiser_app:fundraiser_category_list' category.slug %}">{{ category.category_name }}</a></u></h2>
+      </div>
+
+    {% endfor %}
+
+
+
+
+{% endblock maincontent %}
