@@ -21,13 +21,13 @@
     <p class="margintop50px marginbot40px"><a href="{% url 'fundraiser_app:home' %}">Return to fundraiser home page</a></p>
 
 
-    <article class="indigo_border_with_center2" style="margin: 20px auto; padding: 0;">
+    <article class="fundraiser_topic" style="margin: 20px auto; padding: 0;">
       <h2><u>{{ fundraiser.title }}</u></h2>
 
 
-      <p class="indigo_border flex-container" style="border: 2px solid indigo; padding: 0;">
+      <p class="indigo_border flex-container">
         <span class="disp_inl_block" style="margin-right: 1em;">
-          <span style="color: blueviolet;"><b><u>User:</u></b></span> <span class="holy_empire">{{ fundraiser.user }}</span>
+          <span style="color: blueviolet;"><b><u>User:</u></b></span> <span class="webfont">{{ fundraiser.user }}</span>
         </span>
 
         <span class="disp_inl_block" style="margin-right: 1em;">
@@ -39,14 +39,14 @@
         </span>
 
         <span class="disp_inl_block" style="margin-right: 1em;">
-          <span style="color: blueviolet;"><b><u>Raised:</u></b></span> ${{ fundraiser.amount_raised|intcomma }} <b class="holy_empire"> / </b> ${{ fundraiser.amount_needed|intcomma }}
+          <span style="color: blueviolet;"><b><u>Raised:</u></b></span> ${{ fundraiser.amount_raised|intcomma }} <b class="webfont"> / </b> ${{ fundraiser.amount_needed|intcomma }}
         </span>
 
         <span class="disp_inl_block" style="margin-right: 1em;">
           <span style="color: blueviolet;"><b><u>Percentage complete:</u></b></span> {{ fundraiser.get_percentage_raised }} %
         </span>
 
-        <span class="disp_inl_block holy_empire">
+        <span class="disp_inl_block webfont">
           <a class="purp_yellow_trans" style="margin-right: 1em;" href="{% url 'fundraiser_app:rss2_fundraiser_feed' fundraiser.category.slug fundraiser.id fundraiser.slug %}">RSS 2 feed</a>
           <a class="purp_yellow_trans" href="{% url 'fundraiser_app:atom1_fundraiser_feed' fundraiser.category.slug fundraiser.id fundraiser.slug %}">Atom 1 feed</a>
         </span>
@@ -84,7 +84,7 @@
         <form id="paytrace_donation_form" action="{% url 'fundraiser_app:donate' fundraiser.category.slug fundraiser.id fundraiser.created.year fundraiser.created.month fundraiser.created.day fundraiser.slug %}" method="POST">
           {{ donation.as_p }}
           {% csrf_token %}
-          <input type="submit" value="Donate!" class="submitbox">
+          <input type="submit" value="Donate!" class="submitbox" id="donation_form_submit">
         </form>
 
 
@@ -163,16 +163,40 @@
 
 
         var donation_form = document.getElementById('paytrace_donation_form');
+        var donation_form_submit = document.getElementById('donation_form_submit');
         var donation_status = document.getElementById('donation_status');
 
         function showLoading() {
             donation_status.innerHTML = '<h2 class="loading" style="width: 200px; padding: 5px;">Loading...</h2>';
+            donation_form_submit.classList.add('disp_none');
         }
 
         donation_form.onsubmit = showLoading
         donation_status.innerHTML = '';  // if people reload page, set to empty
 
+
+
+
+
+        function pageShown(evt) {
+            if (evt.persisted) {    // If user clicks back button
+                donation_status.innerHTML = '';   // Take away loading status
+                donation_form_submit.classList.remove('disp_none');   // Give button back to donate
+            } else {
+              // pass
+            }
+        }
+
+
+
+        window.addEventListener("pageshow", pageShown, false);
+
+
+
     </script>
+
+
+
 
 
 
