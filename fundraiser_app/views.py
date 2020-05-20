@@ -34,7 +34,7 @@ def create(request, category_slug):
             new_fundraiser.user = request.user
             new_fundraiser.category = category
             new_fundraiser.save()
-            return redirect(reverse('fundraiser_app:detail', args=[new_fundraiser.category, new_fundraiser.id, new_fundraiser.created.year, new_fundraiser.created.month, new_fundraiser.created.day, new_fundraiser.slug]))
+            return redirect(reverse('fundraiser_app:detail', args=[new_fundraiser.category.slug, new_fundraiser.id, new_fundraiser.created.year, new_fundraiser.created.month, new_fundraiser.created.day, new_fundraiser.slug]))
     return render(request, 'fundraiser_app/fundraiser_create.html', {'form': form, 'category_slug': category_slug})
 
 
