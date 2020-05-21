@@ -8,16 +8,16 @@ If you aren't doing anything illegal: Knock yourself out.
 
 ## PROGRAM CREATED BY:
 
-Kevin from PwnSauceDesigns.com
+Kevin from CyberHavenProgramming.com
 
 ## Instructions / Things you will need to do:
 
-[Read instructions on my blog](https://pwnsaucedesigns.com/blog/2019/3/20/beat-censorship-gofundme-crowdfunding-fundraiser-alternative-using-paytrace-api-payment-gateway-python-django/) for a more thorough intro, reasoning, and the functionality to this app.
+[Read instructions on my blog](https://CyberHavenProgramming.com/blog/2019/3/20/beat-censorship-gofundme-crowdfunding-fundraiser-alternative-using-paytrace-api-payment-gateway-python-django/) for a more thorough intro, reasoning, and the functionality to this app.
 
 ## ADDITIONAL LEGAL NOTICES:
 
 If you want to use this program, in addition to the LICENSE in this repository, you must also do the following...
 
-1. Give me credit for creating the foundation of this program. I would appreciate a [link back to the instructions](https://pwnsaucedesigns.com/blog/2019/3/20/beat-censorship-gofundme-crowdfunding-fundraiser-alternative-using-paytrace-api-payment-gateway-python-django/) on my website, or the [home page of my website](https://www.pwnsaucedesigns.com/), preferably from the website you run the program on... You don't have to do those, but at the very least, you must put either of those urls in your source code so people can know how to get started *(Example: put the links in the README file, or if you don't have a README file, attribute me somewhere where people will see it, whether on the frontend or backend)*.
+1. Give me credit for creating the foundation of this program. I would appreciate a [link back to the instructions](https://CyberHavenProgramming.com/blog/2019/3/20/beat-censorship-gofundme-crowdfunding-fundraiser-alternative-using-paytrace-api-payment-gateway-python-django/) on my website, or the [home page of my website](https://www.CyberHavenProgramming.com/), preferably from the website you run the program on... You don't have to do those, but at the very least, you must put either of those urls in your source code so people can know how to get started *(Example: put the links in the README file, or if you don't have a README file, attribute me somewhere where people will see it, whether on the frontend or backend)*.
 
 That's it!
