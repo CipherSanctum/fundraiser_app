@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load fundraiser_tags_pwn %}
 
 
 {% block seotag %}
-  <title>{{ category_slug }} fundraisers</title>
+  <title>{{ category_slug|unslugify_and_capitalize }} Fundraisers</title>
 {% endblock seotag %}
 
 
 
 {% block maincontent %}
 
-    <h1 class="margintop100px">{{ category_slug }} fundraisers</h1>
+    <h1 class="margintop100px">{{ category_slug|unslugify_and_capitalize }} Fundraisers</h1>
 
     {% if request.user.is_authenticated %}
         <a href="{% url 'fundraiser_app:create' category_slug %}"><button class="submitbox margintop30px">Create Fundraiser</button></a>
