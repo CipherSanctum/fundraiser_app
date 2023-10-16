@@ -111,10 +111,11 @@ def donate(request, category_slug, fundr_id, year, month, day, slug):  # donate 
             donation.fundraiser = fundraiser
             # 1. AUTHENTICATION / PERMISSION - Send a POST request with your user credentials to generate bearer access token:   https://developers.paytrace.com/support/home#14000041395
             # NOT USING OAUTH 2.0, response is always json
-            access_token = requests.post('https://api.paytrace.com/oauth/token', data=settings.PAYTRACE_NEW_ACCESS_TOKEN_CREDENTIALS, headers=settings.PAYTRACE_NEW_ACCESS_TOKEN_HEADERS)
+            # The following URL's are for the sandbox. To go live, use the same URL structure but with no 'sandbox' in it. Such as: to https://api.paytrace.com/oauth/token
+            access_token = requests.post('https://api.sandbox.paytrace.com/oauth/token', data=settings.PAYTRACE_NEW_ACCESS_TOKEN_CREDENTIALS, headers=settings.PAYTRACE_NEW_ACCESS_TOKEN_HEADERS)
             json_access_token = json.loads(access_token.text)
             # 2. MAKE PAYMENT - once web token is returned to browser... Send token back as https POST request with json and headers
-            make_payment = requests.post('https://api.paytrace.com/v1/transactions/sale/keyed', json=payment_credentials(request, donation), headers=authorization_headers(json_access_token))
+            make_payment = requests.post('https://api.sandbox.paytrace.com/v1/transactions/sale/keyed', json=payment_credentials(request, donation), headers=authorization_headers(json_access_token))
             # 3. CHECK RESPONSE ERRORS - For any API errors, Check out PayTrace Virtual Terminal → integration → API log.  Check out API Log for more details.
             payment_response = json.loads(make_payment.text)
             if payment_response['response_code'] != 101:    # 101 is good, anything else is an error, etc
