@@ -8,7 +8,7 @@ If you aren't doing anything illegal: Knock yourself out.
 
 ## PROGRAM CREATED BY:
 
-Kevin Keable, owner of CipherSanctum.com
+Kevin Keable, owner of https://CipherSanctum.com
 
 ## Update 1/5/2024
 
